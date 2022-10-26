@@ -50,9 +50,12 @@ window.onscroll = function () {
 navList.addEventListener("click", (sec) => {
   sec.preventDefault();
   if (sec.target.dataset.nav) {
-    console.log(sec.target.dataset.nav)
-    const mySec = document.getElementById(`${sec.target.dataset.nav}`); 
-    console.log(mySec)
+    const activeSection = Array.from(document.getElementsByClassName('your-active-class'));
+    activeSection.forEach(s => {
+      s.classList.remove('your-active-class');
+    })
+    const mySec = document.getElementById(`${sec.target.dataset.nav}`);
+    mySec.classList.add('your-active-class');
     mySec.scrollIntoView({ behavior: "smooth" });
     //determining speed go to page
     setTimeout(() => {
@@ -61,5 +64,4 @@ navList.addEventListener("click", (sec) => {
     }, 250);
   }
 });
-
 
