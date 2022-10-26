@@ -23,26 +23,32 @@ function createListItems() {
 createListItems();
 
 
-//put the properties of animation on the page
 
 
-window.onscroll = function () {
+//put the properties of animation on the page and click section appear properties active-link 
 
-  document.querySelectorAll("section").forEach(function (active) {
+window.onscroll = function() {
+	document.querySelectorAll("section").forEach(function(active) {
+    const activeLink = navList.querySelector(`[data-nav=${active.id}]`);
+	if(active.getBoundingClientRect().top >= -100 &&
 
-    if (
+  active.getBoundingClientRect().top <= 50){
 
-      !active.classList.contains("your-active-class")
+    active.classList.add("your-active-class");
 
-    ) {
 
-      active.classList.add("your-active-class");
+    activeLink.classList.add("active-link");
 
-    } else {
-      active.classList.remove("your-active-class");
     }
-  });
-};
+    else{
+         active.classList.remove("your-active-class");
+
+
+         activeLink.classList.remove("active-link");
+    }
+	});
+}
+
 
 
 //make function to be when I click a section in navlist going paragraph section and going smooth
